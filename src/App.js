@@ -5,9 +5,11 @@ import { Switch, Route } from "react-router-dom";
 import AuthService from "./components/auth/auth-service";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
-import BookList from "./components/BookList";
+import BookList from "./components/books/BookList";
 import Navbar from "./components/Navbar";
-import SearchBooks from "./components/SearchBooks";
+import SearchBooks from "./components/books/SearchBooks";
+import bookProfile from "./components/books/BookProfile";
+import UserProfile from "./components/user/UserProfile";
 
 class App extends Component {
   state = { loggedInUser: null };
@@ -51,6 +53,13 @@ class App extends Component {
           setLoggedInUser={this.setLoggedInUser}
         />
         <Switch>
+          <Route exact path="/book-profile/:isbn" component={bookProfile} />
+          <Route
+            exact
+            path="/user/:id"
+            component={UserProfile}
+            loggedInUser={this.state.loggedInUser}
+          />
           <Route exact path="/book-list" component={BookList} />
           <Route
             exact

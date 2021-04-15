@@ -3,6 +3,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SearchBookCard from "./SearchBookCard";
+import CreatePlace from "../place/CreatePlace";
 
 /* import AddProject from "./AddProject"; // <== !!! */
 
@@ -24,21 +26,15 @@ class BookList extends Component {
   render() {
     return (
       <div>
-        hey
-        <div style={{ width: "60%", float: "left" }}>
-          {this.state.listOfBooks.map((book) => {
-            return (
-              <div key={book._id}>
-                <Link to={`/books/${book.isbn[0]}`}>
-                  <h3>{book.title}</h3>
-                </Link>
-                <p>{book.author}</p>
-                <p>{book.ganre}</p>
-                <p style={{ maxWidth: "400px" }}>{book.description} </p>
-              </div>
-            );
-          })}
-        </div>
+        <CreatePlace />
+        <ul>
+          <Link to="/search">Search</Link>
+          <div style={{ width: "60%", float: "left" }}>
+            {this.state.listOfBooks.map((book) => {
+              return <SearchBookCard key={book.cover_i} {...book} />;
+            })}
+          </div>
+        </ul>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import SearchBookCard from "./SearchBookCard";
 /* import { Link } from "react-router-dom"; */
 
 export default class SearchBooks extends Component {
@@ -14,7 +15,7 @@ export default class SearchBooks extends Component {
     event.preventDefault();
     this.setState({ loading: true });
     axios
-      .get(`http://openlibrary.org/search.json?title=${this.state.search}`)
+      .get(`http://openlibrary.org/search.json?q=${this.state.search}`)
       .then((response) => {
         console.log(response.data.docs);
         this.setState({ booksFromAPI: response.data.docs, loading: false });
@@ -33,7 +34,6 @@ export default class SearchBooks extends Component {
     return (
       <div>
         <form onSubmit={this.handleFormSubmit}>
-          <label>Search</label>
           <input
             type="text"
             name="search"
@@ -43,21 +43,17 @@ export default class SearchBooks extends Component {
           <input type="submit" value="search" />
         </form>
         {this.state.loading && <div>loading...</div>}
+        <button onClick={() => this.setState({ page: this.state.page - 1 })}>
+          Back
+        </button>
+        <button onClick={() => this.setState({ page: this.state.page + 1 })}>
+          Next
+        </button>
         <ul>
-          <button onClick={() => this.setState({ page: this.state.page + 1 })}>
-            Next
-          </button>
           {this.state.booksFromAPI
             .slice(10 * (this.state.page - 1), 10 * this.state.page)
             .map((book) => {
-              return (
-                <li>
-                  {book.title}
-                  <img
-                    src={`http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-                  />
-                </li>
-              );
+              return <SearchBookCard key={book.cover_i} {...book} />;
             })}
         </ul>
       </div>
