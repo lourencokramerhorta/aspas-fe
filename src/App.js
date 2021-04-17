@@ -10,6 +10,9 @@ import Navbar from "./components/Navbar";
 import SearchBooks from "./components/books/SearchBooks";
 import bookProfile from "./components/books/BookProfile";
 import UserProfile from "./components/user/UserProfile";
+import CreatePlace from "./components/place/CreatePlace";
+import UserList from "./components/user/UserList";
+import PlaceProfile from "./components/place/PlaceProfile";
 
 class App extends Component {
   state = { loggedInUser: null };
@@ -54,13 +57,35 @@ class App extends Component {
         />
         <Switch>
           <Route exact path="/book-profile/:isbn" component={bookProfile} />
+          <Route exact path="/user-list" component={UserList} />
+          <Route exact path="/place-profile/:id" component={PlaceProfile} />
           <Route
             exact
             path="/user/:id"
-            component={UserProfile}
-            loggedInUser={this.state.loggedInUser}
+            render={(props) => (
+              <UserProfile
+                getUser={this.getTheUser}
+                loggedInUser={this.state.loggedInUser}
+                {...props}
+              />
+            )}
           />
-          <Route exact path="/book-list" component={BookList} />
+          <Route
+            exact
+            path="/book-list"
+            render={(props) => (
+              <BookList
+                getUser={this.getTheUser}
+                loggedInUser={this.state.loggedInUser}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/create-place"
+            render={(props) => <CreatePlace {...props} />}
+          />
           <Route
             exact
             path="/signup"

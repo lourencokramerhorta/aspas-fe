@@ -10,11 +10,31 @@ export default class AddBook extends Component {
     console.log("addBookToCollection", response);
   };
 
+  removeBookFromCollection = async (book) => {
+    const res = await this.service.removeBook(book._id);
+    this.props.setUser(res);
+    console.log("remove book", res);
+  };
+
   render() {
+    const hasBook =
+      this.props.loggedInUser &&
+      this.props.loggedInUser.books.includes(this.props.book._id);
     return (
-      <button onClick={() => this.addBookToCollection(this.props.book)}>
-        Add Book to Collection
-      </button>
+      <div>
+        {!hasBook && (
+          <button onClick={() => this.addBookToCollection(this.props.book)}>
+            Add Book to Collection
+          </button>
+        )}
+        {hasBook && (
+          <button
+            onClick={() => this.removeBookFromCollection(this.props.book)}
+          >
+            remove book from Collection
+          </button>
+        )}
+      </div>
     );
   }
 }

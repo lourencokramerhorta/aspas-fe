@@ -12,6 +12,10 @@ class UserService {
   getTheUser = (id) => {
     return this.service.get(`/user/${id}`).then((response) => response.data);
   };
+
+  getUserList = () => {
+    return this.service.get("/user-list").then((response) => response.data);
+  };
 }
 
 export default UserService;

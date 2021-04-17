@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "./auth/auth-service";
 
-
 class Navbar extends Component {
   service = new AuthService();
 
@@ -18,10 +17,17 @@ class Navbar extends Component {
         <ul>
           {this.props.loggedInUser && (
             <Fragment>
-              <li>Welcome, {this.props.loggedInUser.username}</li>
+              <Link to={`/user/${this.props.loggedInUser._id}`}>
+                <li>Welcome, {this.props.loggedInUser.username}</li>
+              </Link>
               <li>
                 <Link to="/book-list" style={{ textDecoration: "none" }}>
                   books
+                </Link>
+              </li>
+              <li>
+                <Link to="/user-list" style={{ textDecoration: "none" }}>
+                  users
                 </Link>
               </li>
               <li>

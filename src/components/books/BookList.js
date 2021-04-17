@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import SearchBookCard from "./SearchBookCard";
-import CreatePlace from "../place/CreatePlace";
 
 /* import AddProject from "./AddProject"; // <== !!! */
 
@@ -26,12 +25,17 @@ class BookList extends Component {
   render() {
     return (
       <div>
-        <CreatePlace />
         <ul>
           <Link to="/search">Search</Link>
           <div style={{ width: "60%", float: "left" }}>
             {this.state.listOfBooks.map((book) => {
-              return <SearchBookCard key={book.cover_i} {...book} />;
+              return (
+                <SearchBookCard
+                  key={book.cover_i}
+                  loggedInUser={this.props.loggedInUser}
+                  {...book}
+                />
+              );
             })}
           </div>
         </ul>

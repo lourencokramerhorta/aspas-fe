@@ -12,7 +12,6 @@ export default class SearchBookCard extends Component {
   };
 
   render() {
-    console.log(this.props.edition_key);
     return (
       <li>
         <div className="card" style={{ width: "18rem" }}>
@@ -32,7 +31,11 @@ export default class SearchBookCard extends Component {
             >
               See more
             </Link>
-            <AddBook book={this.props} />
+            <AddBook
+              book={this.props}
+              setUser={this.props.setUser}
+              loggedInUser={this.props.loggedInUser}
+            />
           </div>
         </div>
       </li>

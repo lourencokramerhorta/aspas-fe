@@ -9,8 +9,16 @@ class PlaceService {
     this.service = service;
   }
 
-  createPlace = () => {
-    return this.service.post("/create-place").then((response) => response.data);
+  createPlace = (name, description) => {
+    return this.service
+      .post("/create-place", { name, description })
+      .then((response) => response.data);
+  };
+
+  getThePlace = (placeId) => {
+    return this.service
+      .get(`/place/${placeId}`)
+      .then((response) => response.data);
   };
 }
 
