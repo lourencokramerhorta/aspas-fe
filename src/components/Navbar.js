@@ -7,7 +7,7 @@ class Navbar extends Component {
 
   logoutUser = () => {
     this.service.logout().then(() => {
-      this.props.setLoggedInUser();
+      this.props.logoutTheUser();
     });
   };
 
@@ -51,6 +51,7 @@ class Navbar extends Component {
               </li>
             </Fragment>
           )}
+          <Link to="/search">Search</Link>
         </ul>
       </nav>
     );

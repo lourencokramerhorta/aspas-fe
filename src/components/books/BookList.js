@@ -10,6 +10,7 @@ import SearchBookCard from "./SearchBookCard";
 class BookList extends Component {
   state = { listOfBooks: [] };
 
+  // METER ISTO NO SERVICO!!!!!
   getAllBooksInDB = () => {
     axios.get(`http://localhost:5000/books-list`).then((responseFromApi) => {
       this.setState({
@@ -24,21 +25,19 @@ class BookList extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
-          <Link to="/search">Search</Link>
-          <div style={{ width: "60%", float: "left" }}>
-            {this.state.listOfBooks.map((book) => {
-              return (
-                <SearchBookCard
-                  key={book.cover_i}
-                  loggedInUser={this.props.loggedInUser}
-                  {...book}
-                />
-              );
-            })}
-          </div>
-        </ul>
+      <div className="container-fluid">
+        <div className="row">
+          {this.state.listOfBooks.map((book) => {
+            return (
+              <SearchBookCard
+                key={book._id}
+                setTheUser={this.props.setTheUser}
+                loggedInUser={this.props.loggedInUser}
+                book={book}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

@@ -13,9 +13,10 @@ import UserProfile from "./components/user/UserProfile";
 import CreatePlace from "./components/place/CreatePlace";
 import UserList from "./components/user/UserList";
 import PlaceProfile from "./components/place/PlaceProfile";
+import Nav from "./components/Nav";
 
 class App extends Component {
-  state = { loggedInUser: null };
+  state = { loggedInUser: null, searchSubmitted: false };
 
   service = new AuthService();
 
@@ -36,11 +37,19 @@ class App extends Component {
     }
   }
 
-  setLoggedInUser = () => {
+  resetSearch = () => {
+    this.setState({ searchSubmitted: false });
+  };
+
+  submitSearch = () => {
+    this.setState({ searchSubmitted: true });
+  };
+
+  logoutTheUser = () => {
     this.setState({ loggedInUser: false });
   };
 
-  getTheUser = (userObj) => {
+  setTheUser = (userObj) => {
     console.log("userObj", userObj);
     this.setState({
       loggedInUser: userObj,
@@ -51,10 +60,16 @@ class App extends Component {
     this.fetchUser();
     return (
       <div className="App">
-        <Navbar
+        <Nav
           loggedInUser={this.state.loggedInUser}
-          setLoggedInUser={this.setLoggedInUser}
+          logoutTheUser={this.logoutTheUser}
+          submitSearch={this.submitSearch}
+          searchSubmitted={this.state.searchSubmitted}
         />
+        {/*      <Navbar
+          loggedInUser={this.state.loggedInUser}
+          logoutTheUser={this.logoutTheUser}
+        /> */}
         <Switch>
           <Route exact path="/book-profile/:isbn" component={bookProfile} />
           <Route exact path="/user-list" component={UserList} />
@@ -64,8 +79,9 @@ class App extends Component {
             path="/user/:id"
             render={(props) => (
               <UserProfile
-                getUser={this.getTheUser}
+                setTheUser={this.setTheUser}
                 loggedInUser={this.state.loggedInUser}
+                logoutTheUser={this.logoutTheUser}
                 {...props}
               />
             )}
@@ -75,7 +91,7 @@ class App extends Component {
             path="/book-list"
             render={(props) => (
               <BookList
-                getUser={this.getTheUser}
+                setTheUser={this.setTheUser}
                 loggedInUser={this.state.loggedInUser}
                 {...props}
               />
@@ -89,14 +105,24 @@ class App extends Component {
           <Route
             exact
             path="/signup"
-            render={(props) => <Signup getUser={this.getTheUser} {...props} />}
+            render={(props) => <Signup getUser={this.setTheUser} {...props} />}
           />
           <Route
             exact
             path="/sign-in"
-            render={(props) => <Login getUser={this.getTheUser} {...props} />}
+            render={(props) => <Login getUser={this.setTheUser} {...props} />}
           />
-          <SearchBooks path="/search" />
+          <Route
+            exact
+            path="/search/:query"
+            render={(props) => (
+              <SearchBooks
+                setTheUser={this.setTheUser}
+                resetSearch={this.resetSearch}
+                {...props}
+              />
+            )}
+          />
         </Switch>
       </div>
     );

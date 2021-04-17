@@ -1,25 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
 import SearchBookCard from "./SearchBookCard";
-/* import { Link } from "react-router-dom"; */
+import OpenLibraryService from "./openlibrary-service";
 
 export default class SearchBooks extends Component {
   state = {
-    search: "",
+    search: this.props.match.params.query,
     booksFromAPI: [],
     loading: false,
     page: 1,
   };
 
+  service = new OpenLibraryService();
+
   handleFormSubmit = (event) => {
     event.preventDefault();
     this.setState({ loading: true });
-    axios
-      .get(`http://openlibrary.org/search.json?q=${this.state.search}`)
-      .then((response) => {
-        console.log(response.data.docs);
-        this.setState({ booksFromAPI: response.data.docs, loading: false });
+    this.service.search(this.state.search).then((response) => {
+      this.setState({
+        booksFromAPI: response.docs,
+        loading: false,
       });
+    });
   };
 
   handleChange = (event) => {
@@ -30,6 +32,20 @@ export default class SearchBooks extends Component {
   handlePages = () => {
     this.setState({ page: this.state.page + 1 });
   };
+
+  componentDidMount() {
+    this.props.resetSearch();
+    if (this.state.search.length > 0) {
+      this.setState({ loading: true });
+      this.service.search(this.state.search).then((response) => {
+        this.setState({
+          booksFromAPI: response.docs,
+          loading: false,
+        });
+      });
+    }
+  }
+
   render() {
     return (
       <div>
@@ -49,13 +65,15 @@ export default class SearchBooks extends Component {
         <button onClick={() => this.setState({ page: this.state.page + 1 })}>
           Next
         </button>
-        <ul>
-          {this.state.booksFromAPI
-            .slice(10 * (this.state.page - 1), 10 * this.state.page)
-            .map((book) => {
-              return <SearchBookCard key={book.cover_i} {...book} />;
-            })}
-        </ul>
+        <div className="container-fluid">
+          <div className="row">
+            {this.state.booksFromAPI
+              .slice(10 * (this.state.page - 1), 10 * this.state.page)
+              .map((book) => {
+                return <SearchBookCard key={book.cover_i} book={book} />;
+              })}
+          </div>
+        </div>
       </div>
     );
   }

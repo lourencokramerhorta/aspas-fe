@@ -9,7 +9,7 @@ class UserService {
     this.service = service;
   }
 
-  getTheUser = (id) => {
+  setTheUser = (id) => {
     return this.service.get(`/user/${id}`).then((response) => response.data);
   };
 
