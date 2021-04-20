@@ -20,6 +20,7 @@ export default class UserProfile extends Component {
     const { id } = this.props.match.params;
     const user = await this.service.setTheUser(id);
     this.setState({ profileUser: user });
+    console.log("here");
   };
 
   setProfileUser = (user) => {
@@ -47,29 +48,38 @@ export default class UserProfile extends Component {
       profileUser._id === this.props.loggedInUser._id;
     return (
       <div>
-        <Link to="/create-place">Create Place</Link>
+        {isOwnProfile && (
+          <div>
+            <Link to="/create-place">Create Place</Link>
+            <br></br>
+            <Link to="/user/:id/edit">edit profile</Link>
+          </div>
+        )}
+        <img src={profileUser.photo} alt />
         <h3>{profileUser.username}</h3>
-
+        {/* <img src={ profileUser.photo}/> */}
         <h5>{profileUser.username}'s places:</h5>
         {profileUser.places &&
           profileUser.places.map((place) => {
             return <Link to={`/place-profile/${place._id}`}>{place.name}</Link>;
           })}
         <h5>{profileUser.username}'s books:</h5>
-        <div className="container">
-          {profileUser.books &&
-            profileUser.books.map((book) => {
-              return (
-                <SearchBookCard
-                  key={book._id}
-                  setProfileUser={this.setProfileUser}
-                  setTheUser={this.props.setTheUser}
-                  loggedInUser={this.props.loggedInUser}
-                  pickBook={this.pickBook}
-                  book={book}
-                />
-              );
-            })}
+        <div className="container-fluid">
+          <div className="row">
+            {profileUser.books &&
+              profileUser.books.map((book) => {
+                return (
+                  <SearchBookCard
+                    key={book._id}
+                    setProfileUser={this.setProfileUser}
+                    setTheUser={this.props.setTheUser}
+                    loggedInUser={this.props.loggedInUser}
+                    pickBook={this.pickBook}
+                    book={book}
+                  />
+                );
+              })}
+          </div>
         </div>
         {this.state.pickedBook.length >= 1 && (
           <Transaction

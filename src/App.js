@@ -14,6 +14,7 @@ import CreatePlace from "./components/place/CreatePlace";
 import UserList from "./components/user/UserList";
 import PlaceProfile from "./components/place/PlaceProfile";
 import Nav from "./components/Nav";
+import EditProfile from "./components/user/EdidProfile";
 
 class App extends Component {
   state = { loggedInUser: null, searchSubmitted: false };
@@ -66,7 +67,7 @@ class App extends Component {
           submitSearch={this.submitSearch}
           searchSubmitted={this.state.searchSubmitted}
         />
-        {/*      <Navbar
+        {/* <Navbar
           loggedInUser={this.state.loggedInUser}
           logoutTheUser={this.logoutTheUser}
         /> */}
@@ -79,6 +80,18 @@ class App extends Component {
             path="/user/:id"
             render={(props) => (
               <UserProfile
+                setTheUser={this.setTheUser}
+                loggedInUser={this.state.loggedInUser}
+                logoutTheUser={this.logoutTheUser}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/user/:id/edit"
+            render={(props) => (
+              <EditProfile
                 setTheUser={this.setTheUser}
                 loggedInUser={this.state.loggedInUser}
                 logoutTheUser={this.logoutTheUser}
@@ -113,7 +126,6 @@ class App extends Component {
             render={(props) => <Login getUser={this.setTheUser} {...props} />}
           />
           <Route
-            exact
             path="/search/:query"
             render={(props) => (
               <SearchBooks

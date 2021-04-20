@@ -16,6 +16,12 @@ class UserService {
   getUserList = () => {
     return this.service.get("/user-list").then((response) => response.data);
   };
+
+  editUserProfile = (user, toEdit) => {
+    return this.service
+      .put(`/user/${user._id}/edit`, toEdit)
+      .then((response) => response.data);
+  };
 }
 
 export default UserService;

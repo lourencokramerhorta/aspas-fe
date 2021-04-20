@@ -51,7 +51,7 @@ class Navbar extends Component {
               </li>
             </Fragment>
           )}
-          <Link to="/search">Search</Link>
+          <Link to="/search/abc">Search</Link>
         </ul>
       </nav>
     );
