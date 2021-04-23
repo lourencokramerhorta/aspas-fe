@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import BookService from "./book-service";
 
 export default class AddBook extends Component {
@@ -32,10 +31,16 @@ export default class AddBook extends Component {
       <div>
         {!hasBook && (
           <div>
-            <button onClick={() => this.props.pickBook(this.props.book)}>
+            <button
+              onClick={() => this.props.pickBook(this.props.book)}
+              className="btn btn-outline-dark mt-2"
+            >
               ask for transaction
             </button>
-            <button onClick={() => this.addBookToCollection(this.props.book)}>
+            <button
+              onClick={() => this.addBookToCollection(this.props.book)}
+              className="btn btn-outline-dark mt-2"
+            >
               Add Book to Collection
             </button>
           </div>
@@ -43,6 +48,7 @@ export default class AddBook extends Component {
         {hasBook && (
           <button
             onClick={() => this.removeBookFromCollection(this.props.book)}
+            className="btn btn-outline-dark mt-2"
           >
             remove book from Collection
           </button>

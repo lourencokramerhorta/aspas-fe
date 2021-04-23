@@ -6,7 +6,6 @@ import AuthService from "./components/auth/auth-service";
 import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import BookList from "./components/books/BookList";
-import Navbar from "./components/Navbar";
 import SearchBooks from "./components/books/SearchBooks";
 import bookProfile from "./components/books/BookProfile";
 import UserProfile from "./components/user/UserProfile";
@@ -15,6 +14,7 @@ import UserList from "./components/user/UserList";
 import PlaceProfile from "./components/place/PlaceProfile";
 import Nav from "./components/Nav";
 import EditProfile from "./components/user/EdidProfile";
+import Home from "./components/Home";
 
 class App extends Component {
   state = { loggedInUser: null, searchSubmitted: false };
@@ -61,20 +61,29 @@ class App extends Component {
     this.fetchUser();
     return (
       <div className="App">
-        <Nav
+        <Route
+          path="*"
+          render={(props) => (
+            <Nav
+              loggedInUser={this.state.loggedInUser}
+              logoutTheUser={this.logoutTheUser}
+              submitSearch={this.submitSearch}
+              searchSubmitted={this.state.searchSubmitted}
+              {...props}
+            />
+          )}
+        />
+        {/*         <Nav
           loggedInUser={this.state.loggedInUser}
           logoutTheUser={this.logoutTheUser}
           submitSearch={this.submitSearch}
           searchSubmitted={this.state.searchSubmitted}
-        />
-        {/* <Navbar
-          loggedInUser={this.state.loggedInUser}
-          logoutTheUser={this.logoutTheUser}
         /> */}
         <Switch>
           <Route exact path="/book-profile/:isbn" component={bookProfile} />
           <Route exact path="/user-list" component={UserList} />
           <Route exact path="/place-profile/:id" component={PlaceProfile} />
+          <Route exact path="/" component={Home} />
           <Route
             exact
             path="/user/:id"

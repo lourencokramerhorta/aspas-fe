@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserService from "./user-service";
 import { Link } from "react-router-dom";
+import UserCard from "./UserCard";
 
 export default class UserList extends Component {
   state = { listOfUsers: [] };
@@ -19,16 +20,21 @@ export default class UserList extends Component {
 
   render() {
     return (
-      <div>
-        <ul>
-          {this.state.listOfUsers.map((user) => {
-            return (
-              <li>
-                <Link to={`/user/${user._id}`}>{user.username}</Link>
-              </li>
-            );
-          })}
-        </ul>
+      <div className="">
+        <div className="container mt-5 pt-5">
+          <div className="row">
+            {this.state.listOfUsers.map((user) => {
+              return (
+                <UserCard
+                  key={user._id}
+                  setTheUser={this.props.setTheUser}
+                  loggedInUser={this.props.loggedInUser}
+                  user={user}
+                />
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }

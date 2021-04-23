@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import SearchBookCard from "./SearchBookCard";
 import OpenLibraryService from "./openlibrary-service";
 
@@ -48,23 +47,55 @@ export default class SearchBooks extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.handleFormSubmit}>
-          <input
-            type="text"
-            name="search"
-            value={this.state.search}
-            onChange={(e) => this.handleChange(e)}
-          />
-          <input type="submit" value="search" />
+          <div className="d-flex justify-content-center my-3">
+            <div>
+              <input
+                className="form-control"
+                type="text"
+                name="search"
+                value={this.state.search}
+                onChange={(e) => this.handleChange(e)}
+              />
+            </div>
+            <div className="">
+              <button
+                type="submit"
+                class={`btn btn-outline-dark align-self-center ${
+                  this.state.loading ? "disabled" : ""
+                }`}
+              >
+                {this.state.loading ? (
+                  <div>
+                    <span
+                      class="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    &nbsp;Loading...
+                  </div>
+                ) : (
+                  <span>SEARCH</span>
+                )}
+              </button>
+            </div>
+          </div>
         </form>
-        {this.state.loading && <div>loading...</div>}
-        <button onClick={() => this.setState({ page: this.state.page - 1 })}>
-          Back
-        </button>
-        <button onClick={() => this.setState({ page: this.state.page + 1 })}>
-          Next
-        </button>
+        <div className="d-flex justify-content-center">
+          <button
+            className="btn btn-outline-dark"
+            onClick={() => this.setState({ page: this.state.page - 1 })}
+          >
+            Prev
+          </button>
+          <button
+            className="btn btn-outline-dark"
+            onClick={() => this.setState({ page: this.state.page + 1 })}
+          >
+            Next
+          </button>
+        </div>
         <div className="container-fluid">
           <div className="row">
             {this.state.booksFromAPI

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import PlaceService from "./place-service";
 
 export default class CreatePlace extends Component {

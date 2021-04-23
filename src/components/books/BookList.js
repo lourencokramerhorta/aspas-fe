@@ -2,7 +2,6 @@
 
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import SearchBookCard from "./SearchBookCard";
 
 /* import AddProject from "./AddProject"; // <== !!! */
@@ -25,7 +24,7 @@ class BookList extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
+      <div className="container mt-5 pt-5">
         <div className="row">
           {this.state.listOfBooks.map((book) => {
             return (

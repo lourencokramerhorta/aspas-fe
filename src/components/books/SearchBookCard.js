@@ -15,31 +15,46 @@ export default class SearchBookCard extends Component {
     const { book } = this.props;
     if (!book) return <div></div>;
     return (
-      <div className="col-3">
-        <div className="card">
-          <img
-            src={`http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-            className="card-img-top"
-            alt="book cover"
-          />
+      <div className="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+        <div className="card  mt-3 bg-light">
+          {book.cover_i && (
+            <img
+              src={`http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
+              className="card-img-top"
+              alt="book cover"
+            />
+          )}
+          {!book.cover_i && (
+            <img
+              src={`https://images.theconversation.com/files/124616/original/image-20160531-1931-1u9i5fu.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip`}
+              className="card-img-top"
+              alt="book cover"
+            />
+          )}
           <div className="card-body">
             <h5 className="card-title">{book.title}</h5>
+
             <p className="card-text">
-              first published: {book.first_publish_year}
+              author:{" "}
+              {book.author.map((aAuthor) => {
+                return aAuthor;
+              })}{" "}
             </p>
-            <Link
-              to={`/book-profile/${this.isbnOrKey(book)}`}
-              className="btn btn-primary"
-            >
-              See more
-            </Link>
-            <AddBook
-              book={book}
-              setProfileUser={this.props.setProfileUser}
-              setTheUser={this.props.setTheUser}
-              loggedInUser={this.props.loggedInUser}
-              pickBook={this.props.pickBook}
-            />
+            <div>
+              <Link
+                to={`/book-profile/${this.isbnOrKey(book)}`}
+                className="btn btn-outline-dark mt-2"
+              >
+                See more
+              </Link>
+              <AddBook
+                book={book}
+                setProfileUser={this.props.setProfileUser}
+                setTheUser={this.props.setTheUser}
+                loggedInUser={this.props.loggedInUser}
+                pickBook={this.props.pickBook}
+              />
+            </div>
           </div>
         </div>
       </div>

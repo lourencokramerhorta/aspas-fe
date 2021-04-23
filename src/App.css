@@ -1,0 +1,46 @@
+.profileHeader{
+    background-color: rgb(196, 198, 199);
+}
+.userCardText{
+     position:absolute;
+     left: 38%;
+}
+
+.btn-home-community {
+    color: white;
+    background-color: #f2a154;
+    
+}
+.btn-home-library {
+    color: white;
+    background-color: #314e52;
+    
+}
+.deep-blue-text {
+    color: #314e52;
+}
+.btn-home-places {
+    color: #314e52;
+    background-color: #e7e6e1;
+    
+}
+
+
+.navbar{
+    background-color: #314e52;
+}
+
+.App{
+    background-color: #e7e6e1;
+    min-height: 100vh;
+}
+.text-deep-blue{
+    color: #e7e6e1 !important;
+}
+
+.bg-deep-blue{
+    background-color: #314e52;
+}
+.bg-golden{
+    background-color: #f2a154;
+}
