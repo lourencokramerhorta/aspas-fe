@@ -73,12 +73,6 @@ class App extends Component {
             />
           )}
         />
-        {/*         <Nav
-          loggedInUser={this.state.loggedInUser}
-          logoutTheUser={this.logoutTheUser}
-          submitSearch={this.submitSearch}
-          searchSubmitted={this.state.searchSubmitted}
-        /> */}
         <Switch>
           <Route exact path="/book-profile/:isbn" component={bookProfile} />
           <Route exact path="/user-list" component={UserList} />

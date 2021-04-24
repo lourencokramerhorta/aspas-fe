@@ -69,21 +69,21 @@ export default class Nav extends Component {
                 </a>
               </li>
               <li className="nav-item ">
-                <a className="nav-link text-deep-blue" href="/user-list">
+                <Link className="nav-link text-deep-blue" href="/user-list">
                   Readers
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link text-deep-blue" href="/">
+                <Link className="nav-link text-deep-blue" href="/">
                   Market
-                </a>
+                </Link>
               </li>
             </ul>
             {this.state.showSearch && (
               <form className="d-flex" onSubmit={this.handleFormSubmit}>
-                <button className="btn btn-outline-light me-2" type="submit">
+                <Link className="btn btn-outline-light me-2" type="submit">
                   Search
-                </button>
+                </Link>
                 <input
                   onChange={this.handleChange}
                   className="form-control me-2"

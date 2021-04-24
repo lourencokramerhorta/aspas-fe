@@ -6,7 +6,6 @@ import SearchBookCard from "./SearchBookCard";
 import bookListImg from "../images/book list.svg";
 import transition from "../images/transition.png";
 
-/* import AddProject from "./AddProject"; // <== !!! */
 
 class BookList extends Component {
   state = { listOfBooks: [] };
