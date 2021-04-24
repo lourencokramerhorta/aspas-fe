@@ -122,7 +122,7 @@ export default class Nav extends Component {
               <Fragment>
                 <Link
                   to="/signup"
-                  className="btn btn-outline-light"
+                  className="btn btn-outline-light me-2"
                   style={{ textDecoration: "none" }}
                 >
                   Signup

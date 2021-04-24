@@ -26,27 +26,29 @@ export default class SearchBookCard extends Component {
           )}
           {!book.cover_i && (
             <img
+              className="rounded "
               src={`https://images.theconversation.com/files/124616/original/image-20160531-1931-1u9i5fu.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip`}
-              className="card-img-top"
+              className="img-fluid"
               alt="book cover"
             />
           )}
-          <div className="card-body">
-            <h5 className="card-title">{book.title}</h5>
 
-            <p className="card-text">
-              author:{" "}
-              {book.author.map((aAuthor) => {
-                return aAuthor;
-              })}{" "}
-            </p>
-            <div>
-              <Link
-                to={`/book-profile/${this.isbnOrKey(book)}`}
-                className="btn btn-outline-dark mt-2"
-              >
-                See more
-              </Link>
+          <div className="container">
+            <div className="card-body">
+              <h5 className="card-title">{book.title}</h5>
+
+              {book.author_name && <p>author: {book.author_name}</p>}
+              {book.author && <p>author: {book.author}</p>}
+            </div>
+            <div className="container">
+              <div className="d-flex justify-content-around ">
+                <Link
+                  to={`/book-profile/${this.isbnOrKey(book)}`}
+                  className="btn btn-home-places m-2"
+                >
+                  See more
+                </Link>
+              </div>
               <AddBook
                 book={book}
                 setProfileUser={this.props.setProfileUser}

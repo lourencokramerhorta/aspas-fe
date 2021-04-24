@@ -44,3 +44,8 @@
 .bg-golden{
     background-color: #f2a154;
 }
+
+.create-place{
+    background-color: #314e52;
+    min-height: 100vh;
+}

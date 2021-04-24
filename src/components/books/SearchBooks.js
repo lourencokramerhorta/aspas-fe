@@ -16,6 +16,7 @@ export default class SearchBooks extends Component {
     event.preventDefault();
     this.setState({ loading: true });
     this.service.search(this.state.search).then((response) => {
+      console.log(response);
       this.setState({
         booksFromAPI: response.docs,
         loading: false,
@@ -47,7 +48,7 @@ export default class SearchBooks extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container mt-5 pt-5">
         <form onSubmit={this.handleFormSubmit}>
           <div className="d-flex justify-content-center my-3">
             <div>
@@ -62,7 +63,7 @@ export default class SearchBooks extends Component {
             <div className="">
               <button
                 type="submit"
-                class={`btn btn-outline-dark align-self-center ${
+                className={`btn btn-outline-dark align-self-center ${
                   this.state.loading ? "disabled" : ""
                 }`}
               >

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserService from "./user-service";
 import FileService from "../file-upload/file-upload-service";
+import editUser from "../images/edit-user.svg";
 
 export default class EdidProfile extends Component {
   state = {
@@ -52,40 +53,61 @@ export default class EdidProfile extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleFormSubmit} enctype="multipart/form-data">
-        <div class="d-flex flex-column bd-highlight mb-3 pt-5">
-          <div class="p-2 bd-highlight align-self-center">
-            <label for=" username">Username:</label>
-            <input
-              type="text"
-              name="username"
-              value={this.state.username}
-              onChange={(e) => this.handleChange(e)}
-            />
-          </div>
-
-          <input type="file" onChange={(e) => this.handleFileUpload(e)} />
-          <button
-            type="submit"
-            class={`btn btn-warning align-self-center ${
-              this.state.loading ? "disabled" : ""
-            }`}
-          >
-            {this.state.loading ? (
-              <div>
-                <span
-                  class="spinner-border spinner-border-sm"
-                  role="status"
-                  aria-hidden="true"
-                ></span>
-                &nbsp;Loading...
-              </div>
-            ) : (
-              <span>Confirm</span>
-            )}
-          </button>
+      <div className="create-place pt-5">
+        <div className="d-flex m-5 justify-content-center align-items-center">
+          <img src={editUser} className="w-25" />
         </div>
-      </form>
+        <div className="d-flex m-5 justify-content-center align-items-center">
+          <div className=" d-flex align-items-center justify-content-center">
+            <div className=" bg-light p-5 shadow">
+              <form
+                onSubmit={this.handleFormSubmit}
+                enctype="multipart/form-data"
+                className="form-group"
+              >
+                <div class="d-flex flex-column bd-highlight">
+                  <div class="form-group  align-self-center">
+                    <label for=" username">Username:</label>
+                    <input
+                      type="text"
+                      name="username"
+                      className="form-control"
+                      value={this.state.username}
+                      onChange={(e) => this.handleChange(e)}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      className="my-3"
+                      type="file"
+                      onChange={(e) => this.handleFileUpload(e)}
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    class={`btn-home-community mt-3 border-0 p-2 align-self-center ${
+                      this.state.loading ? "disabled" : ""
+                    }`}
+                  >
+                    {this.state.loading ? (
+                      <div>
+                        <span
+                          class="spinner-border spinner-border-sm"
+                          role="status"
+                          aria-hidden="true"
+                        ></span>
+                        &nbsp;Loading...
+                      </div>
+                    ) : (
+                      <span>Confirm</span>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

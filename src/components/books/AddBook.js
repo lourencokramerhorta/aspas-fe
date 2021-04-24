@@ -30,28 +30,30 @@ export default class AddBook extends Component {
     return (
       <div>
         {!hasBook && (
-          <div>
+          <div className="d-flex justify-content-around">
             <button
               onClick={() => this.props.pickBook(this.props.book)}
-              className="btn btn-outline-dark mt-2"
+              className="btn btn-home-places m-2 "
             >
-              ask for transaction
+              Trade
             </button>
             <button
               onClick={() => this.addBookToCollection(this.props.book)}
-              className="btn btn-outline-dark mt-2"
+              className="btn btn-home-places m-2"
             >
-              Add Book to Collection
+              Add
             </button>
           </div>
         )}
         {hasBook && (
-          <button
-            onClick={() => this.removeBookFromCollection(this.props.book)}
-            className="btn btn-outline-dark mt-2"
-          >
-            remove book from Collection
-          </button>
+          <div className="d-flex justify-content-around">
+            <button
+              onClick={() => this.removeBookFromCollection(this.props.book)}
+              className="btn btn-home-places m-2"
+            >
+              remove
+            </button>
+          </div>
         )}
       </div>
     );
