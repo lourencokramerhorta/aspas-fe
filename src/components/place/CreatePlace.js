@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PlaceService from "./place-service";
 import placeImage from "../images/create-place.svg";
+import { Link } from "react-router-dom";
 
 export default class CreatePlace extends Component {
   state = {
@@ -54,12 +55,9 @@ export default class CreatePlace extends Component {
                 value={this.state.description}
                 onChange={(e) => this.handleChange(e)}
               />
-              <button
-                className="btn-home-community mt-4 border-0"
-                type="submit"
-              >
+              <Link className="btn-home-community mt-4 border-0" type="submit">
                 Create
-              </button>
+              </Link>
             </form>
           </div>
         </div>

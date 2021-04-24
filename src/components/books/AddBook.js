@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BookService from "./book-service";
+import { Link } from "react-router-dom";
 
 export default class AddBook extends Component {
   service = new BookService();
@@ -31,28 +32,28 @@ export default class AddBook extends Component {
       <div>
         {!hasBook && (
           <div className="d-flex justify-content-around">
-            <button
+            <Link
               onClick={() => this.props.pickBook(this.props.book)}
               className="btn btn-home-places m-2 "
             >
               Trade
-            </button>
-            <button
+            </Link>
+            <Link
               onClick={() => this.addBookToCollection(this.props.book)}
               className="btn btn-home-places m-2"
             >
               Add
-            </button>
+            </Link>
           </div>
         )}
         {hasBook && (
           <div className="d-flex justify-content-around">
-            <button
+            <Link
               onClick={() => this.removeBookFromCollection(this.props.book)}
               className="btn btn-home-places m-2"
             >
               remove
-            </button>
+            </Link>
           </div>
         )}
       </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SearchBookCard from "./SearchBookCard";
 import OpenLibraryService from "./openlibrary-service";
+import { Link } from "react-router-dom";
 
 export default class SearchBooks extends Component {
   state = {
@@ -61,7 +62,7 @@ export default class SearchBooks extends Component {
               />
             </div>
             <div className="">
-              <button
+              <Link
                 type="submit"
                 className={`btn btn-outline-dark align-self-center ${
                   this.state.loading ? "disabled" : ""
@@ -79,23 +80,23 @@ export default class SearchBooks extends Component {
                 ) : (
                   <span>SEARCH</span>
                 )}
-              </button>
+              </Link>
             </div>
           </div>
         </form>
         <div className="d-flex justify-content-center">
-          <button
+          <Link
             className="btn btn-outline-dark"
             onClick={() => this.setState({ page: this.state.page - 1 })}
           >
             Prev
-          </button>
-          <button
+          </Link>
+          <Link
             className="btn btn-outline-dark"
             onClick={() => this.setState({ page: this.state.page + 1 })}
           >
             Next
-          </button>
+          </Link>
         </div>
         <div className="container-fluid">
           <div className="row">

@@ -43,7 +43,7 @@ export default class Nav extends Component {
     return (
       <nav className="navbar navbar-expand-md navbar-dark fixed-top">
         <div className="container ">
-          <button
+          <Link
             className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
@@ -53,7 +53,7 @@ export default class Nav extends Component {
             aria-label="Toggle navigation"
           >
             <span className="navbar-toggler-icon"></span>
-          </button>
+          </Link>
           <Link to="/" className="nav-link">
             <img border="0" alt="user" src={logo} width="30" />
           </Link>

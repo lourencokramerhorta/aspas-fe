@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import AuthService from "./auth/auth-service";
 
-
 class Navbar extends Component {
   service = new AuthService();
 
@@ -32,9 +31,9 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li>
-                <button herf="/book-list" onClick={() => this.logoutUser()}>
+                <Link to="/book-list" onClick={() => this.logoutUser()}>
                   Logout
-                </button>
+                </Link>
               </li>
             </Fragment>
           )}
