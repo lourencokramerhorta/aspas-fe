@@ -60,13 +60,13 @@ export default class Nav extends Component {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul className="navbar-nav me-auto mb-lg-0">
               <li className="nav-item">
-                <a
+                <Link
                   className="nav-link active text-deep-blue"
                   aria-current="page"
-                  href="/book-list"
+                  to="/book-list"
                 >
                   Library
-                </a>
+                </Link>
               </li>
               <li className="nav-item ">
                 <Link className="nav-link text-deep-blue" to="/user-list">
@@ -110,7 +110,7 @@ export default class Nav extends Component {
                   />
                 </Link>
                 <Link
-                  to="/book-list"
+                  to="/"
                   onClick={() => this.logoutUser()}
                   className="nav-link"
                 >
