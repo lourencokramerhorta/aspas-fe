@@ -21,7 +21,7 @@ export default class BookProfile extends Component {
         <h3>{this.state.title}</h3>
         <p>{this.state.author}</p>
         <img
-          src={`http://covers.openlibrary.org/b/id/${this.state.cover_i}-L.jpg`}
+          src={`https://covers.openlibrary.org/b/id/${this.state.cover_i}-L.jpg`}
           className="card-img-top"
           alt="book cover"
         />

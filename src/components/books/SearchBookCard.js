@@ -19,7 +19,7 @@ export default class SearchBookCard extends Component {
         <div className="card  mt-3 bg-light">
           {book.cover_i && (
             <img
-              src={`http://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
+              src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
               className="card-img-top"
               alt="book cover"
             />
