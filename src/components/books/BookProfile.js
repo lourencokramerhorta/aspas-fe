@@ -9,7 +9,7 @@ export default class BookProfile extends Component {
   }
   getBook = () => {
     const { isbn } = this.props.match.params;
-    axios.get(`http://localhost:5000/book-profile/${isbn}`).then((response) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/book-profile/${isbn}`).then((response) => {
       const book = response.data;
       this.setState(book);
     });

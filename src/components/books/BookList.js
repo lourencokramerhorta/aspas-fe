@@ -13,7 +13,7 @@ class BookList extends Component {
 
   // METER ISTO NO SERVICO!!!!!
   getAllBooksInDB = () => {
-    axios.get(`http://localhost:5000/books-list`).then((responseFromApi) => {
+    axios.get(`${process.env.REACT_APP_API_URL}/books-list`).then((responseFromApi) => {
       this.setState({
         listOfBooks: responseFromApi.data,
       });
