@@ -69,12 +69,12 @@ export default class Nav extends Component {
                 </a>
               </li>
               <li className="nav-item ">
-                <Link className="nav-link text-deep-blue" href="/user-list">
+                <Link className="nav-link text-deep-blue" to="/user-list">
                   Readers
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-deep-blue" href="/">
+                <Link className="nav-link text-deep-blue" to="/">
                   Market
                 </Link>
               </li>
