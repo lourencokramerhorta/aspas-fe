@@ -3,7 +3,7 @@ import axios from "axios";
 class OpenLibraryService {
   constructor() {
     let service = axios.create({
-      baseURL: "http://openlibrary.org/",
+      baseURL: "https://openlibrary.org/",
     });
     this.service = service;
   }
