@@ -81,9 +81,6 @@ export default class Nav extends Component {
             </ul>
             {this.state.showSearch && (
               <form className="d-flex" onSubmit={this.handleFormSubmit}>
-                <Link className="btn btn-outline-light me-2" type="submit">
-                  Search
-                </Link>
                 <input
                   onChange={this.handleChange}
                   className="form-control me-2"
