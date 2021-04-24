@@ -60,6 +60,7 @@ export default class UserProfile extends Component {
           <div className="d-flex align-items-start align-items-stretch">
             <div className="col-4">
               <img
+                alt="transaction"
                 src={profileUser.imageUrl}
                 className="rounded-3 w-100 shadow"
               />
@@ -88,7 +89,7 @@ export default class UserProfile extends Component {
             </div>
           </div>
         </div>
-        <img src={transitionGold} className="w-100" />
+        <img src={transitionGold} alt="transaction" className="w-100" />
         <div className="container">
           <UserTabs setTab={this.setTab} tab={this.state.tab} />
           {this.state.tab === "places" && (

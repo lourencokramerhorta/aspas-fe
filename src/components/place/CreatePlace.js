@@ -32,7 +32,7 @@ export default class CreatePlace extends Component {
     return (
       <div className="create-place pt-5">
         <div className="d-flex m-5 justify-content-center align-items-center">
-          <img src={placeImage} className="w-25" />
+          <img src={placeImage} alt="placeImg" className="w-25" />
         </div>
         <div className=" d-flex align-items-center justify-content-center">
           <div className=" bg-light p-5 shadow">

@@ -13,11 +13,13 @@ class BookList extends Component {
 
   // METER ISTO NO SERVICO!!!!!
   getAllBooksInDB = () => {
-    axios.get(`${process.env.REACT_APP_API_URL}/books-list`).then((responseFromApi) => {
-      this.setState({
-        listOfBooks: responseFromApi.data,
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/books-list`)
+      .then((responseFromApi) => {
+        this.setState({
+          listOfBooks: responseFromApi.data,
+        });
       });
-    });
   };
 
   componentDidMount() {
@@ -30,7 +32,11 @@ class BookList extends Component {
         <div>
           <div className="container-fluid bg-deep-blue">
             <div className="d-flex justify-content-center align-items-center mt-5 p-5">
-              <img src={bookListImg} className="w-25 d-flex" />
+              <img
+                src={bookListImg}
+                alt="booklistimg"
+                className="w-25 d-flex"
+              />
               <div className="ms-5">
                 <h1 className="mt-3 text-white fw-bolder">Our Library!</h1>
                 <p className="text-white fs-5">
@@ -43,7 +49,11 @@ class BookList extends Component {
             </div>
           </div>
           <div className="">
-            <img src={transition} className="position-relative w-100" />
+            <img
+              src={transition}
+              alt="transition"
+              className="position-relative w-100"
+            />
           </div>
           <div className="container">
             <div className="row">

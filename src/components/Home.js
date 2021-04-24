@@ -32,7 +32,11 @@ export default class Home extends Component {
           </div>
         </div>
         <div className="">
-          <img src={transition} className="position-relative w-100" />
+          <img
+            src={transition}
+            alt="transaction"
+            className="position-relative w-100"
+          />
         </div>
         <div className="container-fluid">
           <div className="d-flex justify-content-center align-items-center p-5">
@@ -48,11 +52,11 @@ export default class Home extends Component {
                 Our Library
               </Link>
             </div>
-            <img src={library} alt="wtf" className=" w-50 p-5" />
+            <img src={library} alt="library" className=" w-50 p-5" />
           </div>
         </div>
         <div className="container-fluid bg-golden p-0">
-          <img src={transitionWhite} className="w-100" />
+          <img src={transitionWhite} alt="transition" className="w-100" />
           <div className="d-flex justify-content-center align-items-center p-5">
             <img src={places} alt="wtf" className=" w-50 p-5" />
             <div className="ms-5">

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import UserService from "./user-service";
-import { Link } from "react-router-dom";
 import UserCard from "./UserCard";
 
 export default class UserList extends Component {

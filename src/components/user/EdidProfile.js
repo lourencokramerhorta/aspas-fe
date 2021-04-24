@@ -55,7 +55,7 @@ export default class EdidProfile extends Component {
     return (
       <div className="create-place pt-5">
         <div className="d-flex m-5 justify-content-center align-items-center">
-          <img src={editUser} className="w-25" />
+          <img src={editUser} alt="editUser" className="w-25" />
         </div>
         <div className="d-flex m-5 justify-content-center align-items-center">
           <div className=" d-flex align-items-center justify-content-center">
