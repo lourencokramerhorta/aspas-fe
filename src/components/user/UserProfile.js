@@ -23,7 +23,7 @@ export default class UserProfile extends Component {
   setTab = (tab) => {
     this.setState({ tab: tab });
   };
-
+  
   getUserById = async () => {
     const { id } = this.props.match.params;
     const user = await this.service.setTheUser(id);

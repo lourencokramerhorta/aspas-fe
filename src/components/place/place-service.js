@@ -9,9 +9,9 @@ class PlaceService {
     this.service = service;
   }
 
-  createPlace = (name, description) => {
+  createPlace = (name, description, imageUrl) => {
     return this.service
-      .post("/create-place", { name, description })
+      .post("/create-place", { name, description, imageUrl })
       .then((response) => response.data);
   };
 

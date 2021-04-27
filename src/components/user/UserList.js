@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import UserService from "./user-service";
 import UserCard from "./UserCard";
+import userListImg from "../images/user-list.svg";
+import transition from "../images/transition.png";
 
 export default class UserList extends Component {
   state = { listOfUsers: [] };
@@ -23,9 +25,9 @@ export default class UserList extends Component {
         <div>
           <div className="container-fluid bg-deep-blue">
             <div className="d-flex justify-content-center align-items-center mt-5 p-5">
-              {/* <img src={bookListImg} className="w-25 d-flex" /> */}
+              <img src={userListImg} className="w-25 d-flex" />
               <div className="ms-5">
-                <h1 className="mt-3 text-white fw-bolder">Our Library!</h1>
+                <h1 className="mt-3 text-white fw-bolder">Our community!</h1>
                 <p className="text-white fs-5">
                   “The Pessimist Sees Difficulty In Every Opportunity. The
                   Optimist Sees Opportunity In Every Difficulty.” – Winston
@@ -36,7 +38,7 @@ export default class UserList extends Component {
             </div>
           </div>
           <div className="">
-            {/* <img src={transition} className="position-relative w-100" /> */}
+            <img src={transition} className="position-relative w-100" />
           </div>
           <div className="container mt-5 pt-5">
             <div className="row">

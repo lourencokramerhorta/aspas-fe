@@ -62,7 +62,7 @@ export default class EdidProfile extends Component {
             <div className=" bg-light p-5 shadow">
               <form
                 onSubmit={this.handleFormSubmit}
-                enctype="multipart/form-data"
+                encType="multipart/form-data"
                 className="form-group"
               >
                 <div class="d-flex flex-column bd-highlight">

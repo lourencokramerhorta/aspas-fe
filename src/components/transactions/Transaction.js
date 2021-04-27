@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import BookListItem from "../books/BookListItem";
+
 import transactionService from "./transaction-service";
-import { Link } from "react-router-dom";
 
 export default class Transaction extends Component {
   state = { book1: this.props.pickedBook[0], book2: {} };

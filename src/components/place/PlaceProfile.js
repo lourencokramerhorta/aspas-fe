@@ -15,6 +15,15 @@ export default class PlaceProfile extends Component {
     this.setState({ place: place });
   };
   render() {
-    return <div>{this.state.place && <p>{this.state.place.name}</p>}</div>;
+    return (
+      <div className="mt-5 pt-5">
+        {this.state.place && (
+          <div>
+            <p>{this.state.place.name}</p>
+            <img src={this.state.place.imageUrl} alt="place" className="w-50" />
+          </div>
+        )}
+      </div>
+    );
   }
 }
