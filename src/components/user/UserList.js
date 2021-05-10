@@ -25,7 +25,11 @@ export default class UserList extends Component {
         <div>
           <div className="container-fluid bg-deep-blue">
             <div className="d-flex justify-content-center align-items-center mt-5 p-5">
-              <img src={userListImg} className="w-25 d-flex" />
+              <img
+                src={userListImg}
+                className="w-25 d-flex"
+                alt="userListImg"
+              />
               <div className="ms-5">
                 <h1 className="mt-3 text-white fw-bolder">Our community!</h1>
                 <p className="text-white fs-5">
@@ -38,7 +42,11 @@ export default class UserList extends Component {
             </div>
           </div>
           <div className="">
-            <img src={transition} className="position-relative w-100" />
+            <img
+              src={transition}
+              className="position-relative w-100"
+              alt="transition"
+            />
           </div>
           <div className="container mt-5 pt-5">
             <div className="row">

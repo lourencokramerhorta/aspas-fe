@@ -8,6 +8,7 @@ import SearchBookCard from "../books/SearchBookCard";
 import Transaction from "../transactions/Transaction";
 import transitionGold from "../images/transition gold.png";
 import UserTabs from "./UserTabs";
+import MyTrades from "../transactions/MyTrades";
 
 export default class UserProfile extends Component {
   state = {
@@ -23,7 +24,7 @@ export default class UserProfile extends Component {
   setTab = (tab) => {
     this.setState({ tab: tab });
   };
-  
+
   getUserById = async () => {
     const { id } = this.props.match.params;
     const user = await this.service.setTheUser(id);
@@ -58,15 +59,15 @@ export default class UserProfile extends Component {
       <div>
         <div className="shadow p-5 bg-golden rounded mt-5 ">
           <div className="d-flex align-items-start align-items-stretch">
-            <div className="col-4">
+            <div className="col-5">
               <img
-                alt="transaction"
+                alt="userprofile"
                 src={profileUser.imageUrl}
-                className="rounded-3 w-100 shadow"
+                className="rounded-3 w-75 shadow"
               />
             </div>
             <h1 className="userCardText text-white">{profileUser.username}</h1>
-            <div className="col-8 d-flex flex-column align-content-end mt-auto">
+            <div className="col-7 d-flex flex-column align-content-end mt-auto">
               <div className=" align-self-end">
                 {isOwnProfile && (
                   <div>
@@ -83,6 +84,12 @@ export default class UserProfile extends Component {
                     >
                       edit profile
                     </Link>
+                    <Link
+                      to={`/user/${this.props.loggedInUser._id}/delete`}
+                      className="me-3 btn btn-home-library"
+                    >
+                      delete profile
+                    </Link>
                   </div>
                 )}
               </div>
@@ -90,7 +97,7 @@ export default class UserProfile extends Component {
           </div>
         </div>
         <img src={transitionGold} alt="transaction" className="w-100" />
-        <div className="container">
+        <div className="container mt-3">
           <UserTabs setTab={this.setTab} tab={this.state.tab} />
           {this.state.tab === "places" && (
             <div>
@@ -108,6 +115,16 @@ export default class UserProfile extends Component {
                     </Link>
                   );
                 })}
+            </div>
+          )}
+          {this.state.tab === "trades" && (
+            <div>
+              {/* <img src={ profileUser.photo}/> */}
+              <h5>{profileUser.username}'s trades:</h5>
+              <MyTrades
+                profileUser={this.state.profileUser}
+                loggedInUser={this.props.loggedInUser}
+              />
             </div>
           )}
           {this.state.tab === "books" && (

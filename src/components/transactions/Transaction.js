@@ -14,59 +14,61 @@ export default class Transaction extends Component {
 
   makeATrade = async () => {
     const { book1, book2 } = this.state;
-    const { profileUserId } = this.props.user2._id;
     let type = "user";
 
     const trade = await this.transactionService.makeTrade({
-      book1,
-      book2,
-      profileUserId,
+      book1: book1._id,
+      book2: book2._id,
+      profileUserId: this.props.user2._id,
       type,
     });
     console.log("trade", trade);
-    console.log(profileUserId);
+    console.log("profileUserId", this.props.user2);
   };
 
   render() {
     /* console.log("props", this.props); */
     const { user2, loggedInUser } = this.props;
     /* console.log("loggedInUser", loggedInUser); */
-    console.log("book1", this.state.book1);
-    console.log("book2", this.state.book2);
+    console.log("book1", this.state.book1._id);
+    console.log("book2", this.state.book2._id);
     return (
-      <div>
-        <div>
-          <div>New Transaction</div>
-          <h4>{user2.username}</h4>
-          <BookListItem
-            book={this.state.book1}
-            bookYouWant={true}
-            loggedInUser={loggedInUser}
-          />
-          <h4>{loggedInUser.username}</h4>
-          <BookListItem
-            book={this.state.book2}
-            bookYouWant={true}
-            loggedInUser={loggedInUser}
-          />
-        </div>
-        <button className="my-5" onClick={() => this.makeATrade()}>
-          MAKE TRADE
-        </button>
+      <div className="container">
+        <div className="d-flex align-items-center justify-content-between p-4 bg-white mb-4 shadow shadow-rounded">
+          <div>
+            <h4>{user2.username}</h4>
+            <BookListItem
+              book={this.state.book1}
+              bookYouWant={true}
+              loggedInUser={loggedInUser}
+            />
+          </div>
+          <button className="my-5" onClick={() => this.makeATrade()}>
+            MAKE TRADE
+          </button>
+          <div>
+            <h4>{loggedInUser.username}</h4>
+            <BookListItem
+              book={this.state.book2}
+              bookYouWant={true}
+              loggedInUser={loggedInUser}
+            />
 
-        <div>
-          <h4>{loggedInUser.username}</h4>
-          {!this.state.book2 && <div>este Livro</div>}
-          {loggedInUser.books.map((book) => {
-            return (
-              <BookListItem
-                key={book._id}
-                book={book}
-                loggedInUser={loggedInUser}
-                pickBook2={this.pickBook2}
-              />
-            );
-          })}
+            <div>
+              <h4>{loggedInUser.username}</h4>
+              {!this.state.book2 && <div>este Livro</div>}
+              {loggedInUser.books.map((book) => {
+                return (
+                  <BookListItem
+                    key={book._id}
+                    book={book}
+                    loggedInUser={loggedInUser}
+                    pickBook2={this.pickBook2}
+                  />
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     );

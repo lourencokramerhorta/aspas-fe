@@ -74,7 +74,7 @@ export default class Nav extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-deep-blue" to="/">
+                <Link className="nav-link text-deep-blue" to="/trade-list">
                   Market
                 </Link>
               </li>
@@ -98,13 +98,17 @@ export default class Nav extends Component {
                   to={`/user/${this.props.loggedInUser._id}`}
                   className="nav-link"
                 >
-                  <img
-                    border="0"
-                    alt="user"
-                    src={this.props.loggedInUser.imageUrl}
-                    width="37"
-                    className="rounded"
-                  />
+                  <div
+                    style={{
+                      backgroundImage:
+                        "url(" + this.props.loggedInUser.imageUrl + ")",
+                      width: "40px",
+                      height: "40px",
+                      backgroundPosition: "center",
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
                 </Link>
                 <Link
                   to="/"

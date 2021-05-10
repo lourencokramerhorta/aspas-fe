@@ -15,6 +15,7 @@ import PlaceProfile from "./components/place/PlaceProfile";
 import Nav from "./components/Nav";
 import EditProfile from "./components/user/EdidProfile";
 import Home from "./components/Home";
+import TradeList from "./components/transactions/TradeList";
 
 class App extends Component {
   state = { loggedInUser: null, searchSubmitted: false };
@@ -76,13 +77,24 @@ class App extends Component {
         <Switch>
           <Route exact path="/book-profile/:isbn" component={bookProfile} />
           <Route exact path="/user-list" component={UserList} />
-          <Route exact path="/place-profile/:id" component={PlaceProfile} />
           <Route exact path="/" component={Home} />
           <Route
             exact
             path="/user/:id"
             render={(props) => (
               <UserProfile
+                setTheUser={this.setTheUser}
+                loggedInUser={this.state.loggedInUser}
+                logoutTheUser={this.logoutTheUser}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/place-profile/:id"
+            render={(props) => (
+              <PlaceProfile
                 setTheUser={this.setTheUser}
                 loggedInUser={this.state.loggedInUser}
                 logoutTheUser={this.logoutTheUser}
@@ -111,6 +123,13 @@ class App extends Component {
                 loggedInUser={this.state.loggedInUser}
                 {...props}
               />
+            )}
+          />
+          <Route
+            exact
+            path="/trade-list"
+            render={(props) => (
+              <TradeList loggedInUser={this.state.loggedInUser} />
             )}
           />
           <Route

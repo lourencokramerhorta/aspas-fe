@@ -20,6 +20,8 @@ class Signup extends Component {
           password: "",
         });
         this.props.getUser(response);
+        console.log("new user", response);
+        this.props.history.push(`/user/book-list`);
       })
       .catch((error) => console.log("hdjfkfk", error));
   };
@@ -67,7 +69,7 @@ class Signup extends Component {
 
               <p>
                 Already have account?
-                <Link to={"/sign-in"}> Login</Link>
+                <Link to="/sign-in"> Login</Link>
               </p>
             </div>
           </div>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 export default class BookListItem extends Component {
   render() {
@@ -9,9 +8,12 @@ export default class BookListItem extends Component {
         <h5>{book.title}</h5>
         <p>{book.author}</p>
         {!this.props.bookYouWant && (
-          <Link onClick={() => this.props.pickBook2(this.props.book)}>
+          <button
+            type="button"
+            onClick={() => this.props.pickBook2(this.props.book)}
+          >
             trade this book
-          </Link>
+          </button>
         )}
       </div>
     );

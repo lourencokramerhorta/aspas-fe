@@ -23,6 +23,16 @@ export default class UserTabs extends Component {
             places
           </button>
         </li>
+        <li className="nav-item">
+          <button
+            className={
+              tab === "trades" ? " btn btn-home active" : "btn btn-home"
+            }
+            onClick={() => this.props.setTab("trades")}
+          >
+            trades
+          </button>
+        </li>
       </ul>
     );
   }

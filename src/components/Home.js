@@ -12,7 +12,7 @@ export default class Home extends Component {
       <div>
         <div className="container-fluid bg-deep-blue">
           <div className="d-flex justify-content-center align-items-center mt-5 p-5">
-            <img src={community} alt="wtf" className=" w-50 p-5" />
+            <img src={community} alt="community" className=" w-50 p-5" />
             <div className="ms-5">
               <h1 className="mt-3 text-white fw-bolder">Join our community!</h1>
               <p className="text-white fs-5">

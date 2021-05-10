@@ -103,7 +103,14 @@ export default class SearchBooks extends Component {
             {this.state.booksFromAPI
               .slice(10 * (this.state.page - 1), 10 * this.state.page)
               .map((book) => {
-                return <SearchBookCard key={book.cover_i} book={book} />;
+                return (
+                  <SearchBookCard
+                    key={book._id}
+                    setTheUser={this.props.setTheUser}
+                    loggedInUser={this.props.loggedInUser}
+                    book={book}
+                  />
+                );
               })}
           </div>
         </div>

@@ -5,7 +5,7 @@ export default class UserCard extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div className="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3">
+      <div className="col-6 col-md-6 col-lg-3 col-xl-3 col-xxl-3 mt-3">
         <div className="card">
           <img src={user.imageUrl} className="card-img-top" alt="user" />
 
