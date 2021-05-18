@@ -27,7 +27,7 @@ export default class SearchBookCard extends Component {
           {!book.cover_i && (
             <img
               className="rounded img-fluid"
-              src={`https://images.theconversation.com/files/124616/original/image-20160531-1931-1u9i5fu.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip`}
+              src={`http://biblioteca.unicv.edu.cv/img/cover.jpg`}
               alt="book cover"
             />
           )}
